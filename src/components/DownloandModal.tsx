@@ -72,8 +72,8 @@ export default function DownloadModal({ isOpen, onClose }: ModalProps) {
               <p className="text-zinc-500 text-sm mb-8">Download MyRide Transit to manage your routes efficiently.</p>
 
               <div className="flex flex-col gap-3">
-                <button className="flex items-center p-4 rounded-2xl border border-zinc-200 hover:border-[#00635D] hover:shadow-[0_4px_20px_rgba(0,99,93,0.08)] group transition-all text-left bg-white">
-                  <div className="w-12 h-12 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-900 group-hover:bg-[#00635D] group-hover:text-white transition-colors mr-4">
+                <button className="flex items-center p-4 rounded-2xl border border-zinc-200 hover:border-[#1B4C2E] hover:shadow-[0_4px_20px_rgba(0,99,93,0.08)] group transition-all text-left bg-white">
+                  <div className="w-12 h-12 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-900 group-hover:bg-[#1B4C2E] group-hover:text-white transition-colors mr-4">
                   <FaApple />
                   </div>
                   <div>
@@ -82,8 +82,8 @@ export default function DownloadModal({ isOpen, onClose }: ModalProps) {
                   </div>
                 </button>
 
-                <button className="flex items-center p-4 rounded-2xl border border-zinc-200 hover:border-[#00635D] hover:shadow-[0_4px_20px_rgba(0,99,93,0.08)] group transition-all text-left bg-white">
-                  <div className="w-12 h-12 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-900 group-hover:bg-[#00635D] group-hover:text-white transition-colors mr-4">
+                <button className="flex items-center p-4 rounded-2xl border border-zinc-200 hover:border-[#1B4C2E] hover:shadow-[0_4px_20px_rgba(0,99,93,0.08)] group transition-all text-left bg-white">
+                  <div className="w-12 h-12 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-900 group-hover:bg-[#1B4C2E] group-hover:text-white transition-colors mr-4">
                   <IoLogoGooglePlaystore />
 
                   </div>

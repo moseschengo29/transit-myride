@@ -83,7 +83,7 @@ export default function ConnectedEcosystem() {
     <section className="relative w-full py-32 bg-[#F7F7F7] overflow-hidden flex items-center min-h-[100vh] border-y border-zinc-200/50">
       
       {/* --- AMBIENT CORE GLOW --- */}
-      <div className="absolute top-1/2 left-[50%] lg:left-[25%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00635D]/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute top-1/2 left-[50%] lg:left-[25%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1B4C2E]/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
 
       {/* --- ROTATING DATA RINGS --- */}
       <div className="absolute top-1/2 left-[50%] lg:left-[25%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0 pointer-events-none">
@@ -198,7 +198,7 @@ export default function ConnectedEcosystem() {
                           variants={getGraphVariants(height)}
                           animate="animate"
                           transition={{ duration: 2 + i * 0.1, repeat: Infinity, ease: "easeInOut" }}
-                          className={`w-full rounded-sm ${i > 8 ? 'bg-[#00635D]' : 'bg-zinc-700'}`}
+                          className={`w-full rounded-sm ${i > 8 ? 'bg-[#1B4C2E]' : 'bg-zinc-700'}`}
                         />
                       ))}
                     </div>
@@ -242,22 +242,22 @@ export default function ConnectedEcosystem() {
             {/* Enterprise Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 bg-white shadow-sm mb-6 mx-auto lg:mx-0">
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00635D] opacity-40"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00635D]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1B4C2E] opacity-40"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1B4C2E]"></span>
               </span>
               <span className="text-[11px] font-bold tracking-widest uppercase text-zinc-600">Open Architecture</span>
             </div>
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-zinc-950 mb-6 leading-[1.05]">
               Connect your <br />
-              <span className="font-serif text-[#00635D] italic">entire route.</span>
+              <span className="font-serif text-[#1B4C2E] italic">entire route.</span>
             </h2>
             <p className="text-xl text-zinc-500 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed mb-10">
               Sync parents, schools, and dispatch automatically. We handle the complex API routing so you can focus entirely on the road.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pb-10 border-b border-zinc-200">
-               <button className="px-8 py-4 rounded-full bg-[#00635D] text-white text-sm font-bold hover:bg-emerald-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_8px_24px_rgba(0,99,93,0.3)]">
+               <button className="px-8 py-4 rounded-full bg-[#1B4C2E] text-white text-sm font-bold hover:bg-emerald-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_8px_24px_rgba(0,99,93,0.3)]">
                 View developer docs
               </button>
               <button className="px-8 py-4 rounded-full bg-transparent text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors duration-300">

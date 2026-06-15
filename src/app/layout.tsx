@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 import { Inter, Playfair_Display } from "next/font/google";
+import WhatsAppWidget from "../components/WhatsAppWidget";
 
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
       <div className="fixed top-0 left-0 w-full h-20 z-40 pointer-events-none backdrop-blur-[8px] [mask-image:linear-gradient(to_bottom,black_20%,transparent_100%)]" />       
         <SmoothScroll>
           {children}
+          <WhatsAppWidget />
         </SmoothScroll>
       </body>
     </html>

@@ -44,7 +44,7 @@ export default function MoreFeatures() {
 
   return (
     // Solid Premium Green Background
-    <section className="w-full py-32 relative flex flex-col items-center px-6 lg:px-12 overflow-hidden bg-[#004e49]">
+    <section id="features" className="w-full py-32 relative flex flex-col items-center px-6 lg:px-12 overflow-hidden bg-[#004e49]">
       
       {/* Subtle top noise/gradient for texture */}
       <div className="absolute top-0 inset-x-0 h-[300px] bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
@@ -101,7 +101,7 @@ export default function MoreFeatures() {
                   </div>
                   
                   {/* Arrow Indicator */}
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${isActive ? "bg-white text-[#00635D] shadow-lg" : "opacity-0 -translate-x-4"}`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${isActive ? "bg-white text-[#1B4C2E] shadow-lg" : "opacity-0 -translate-x-4"}`}>
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function MoreFeatures() {
 
         {/* --- RIGHT COLUMN: Dynamic Phone Mockup --- */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center">
-          <div className="relative w-[320px] md:w-[340px] h-[680px] md:h-[720px]">
+          <div className="relative w-[320px] md:w-[340px] h-[580px] md:h-[680px]">
             
             <div className="absolute inset-0">
               

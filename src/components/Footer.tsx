@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
     <footer className="relative w-full bg-zinc-950 text-white pt-32 pb-8 px-6 lg:px-12 overflow-hidden rounded-t-[3rem] mt-[-2rem] z-20">
       
       {/* Ambient Brand Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00635D]/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#1B4C2E]/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col">
         
@@ -60,7 +61,7 @@ export default function Footer() {
           >
             <h2 className="text-5xl md:text-7xl lg:text-[88px] font-medium tracking-tighter leading-[0.95] mb-6">
               Your route, <br />
-              <span className="font-serif text-[#00635D] italic">simplified.</span>
+              <span className="font-serif text-[#1B4C2E] italic">simplified.</span>
             </h2>
             <p className="text-xl text-zinc-400 font-medium max-w-md mx-auto lg:mx-0">
               Join thousands of independent operators driving smarter with MyRide Transit.
@@ -105,7 +106,15 @@ export default function Footer() {
           {/* Brand & Socials */}
           <div className="flex flex-col gap-6 lg:max-w-xs">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#00635D] rounded-lg rounded-tr-none flex items-center justify-center shadow-lg" />
+              <Image
+                        src="/Transit icon.png"
+                        alt="My Ride Logo"
+                        width={350}
+                        height={150}
+                        // Smaller height on mobile to prevent squishing
+                        className="h-9 md:h-6 w-auto"
+                        priority
+                      />
               <span className="text-2xl font-bold tracking-tight text-white">MyRide Transit</span>
             </div>
             <p className="text-zinc-400 font-medium text-sm leading-relaxed">
@@ -114,7 +123,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4 mt-2">
               {['Twitter', 'LinkedIn', 'Instagram'].map((social) => (
-                <button key={social} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#00635D] hover:border-[#00635D] transition-all">
+                <button key={social} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#1B4C2E] hover:border-[#1B4C2E] transition-all">
                   {/* Replace with actual social SVGs if desired. Using a generic dot for now */}
                   <span className="w-2 h-2 rounded-full bg-currentColor" />
                 </button>
@@ -130,7 +139,7 @@ export default function Footer() {
                 <ul className="flex flex-col gap-3">
                   {section.links.map((link) => (
                     <li key={link}>
-                      <a href="#" className="text-zinc-400 font-medium hover:text-[#00635D] transition-colors text-sm">
+                      <a href="#" className="text-zinc-400 font-medium hover:text-[#1B4C2E] transition-colors text-sm">
                         {link}
                       </a>
                     </li>
@@ -149,8 +158,8 @@ export default function Footer() {
           {mounted && (
             <div className="flex items-center gap-2">
               <span className="flex h-1.5 w-1.5 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00635D] opacity-70"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00635D]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1B4C2E] opacity-70"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#1B4C2E]"></span>
               </span>
               <span>Nairobi</span>
               <span className="tabular-nums text-zinc-400">{time}</span>

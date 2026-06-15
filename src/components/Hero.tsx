@@ -39,7 +39,7 @@ const floatingStats = [
         <div className="relative w-14 h-14 flex items-center justify-center">
           <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" fill="none" stroke="#E4E4E7" strokeWidth="10" />
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#00635D" strokeWidth="10" strokeLinecap="round" strokeDasharray="283" strokeDashoffset="40" />
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#1B4C2E" strokeWidth="10" strokeLinecap="round" strokeDasharray="283" strokeDashoffset="40" />
           </svg>
           <span className="text-sm font-bold text-zinc-900 tabular-nums">92%</span>
         </div>
@@ -141,7 +141,7 @@ export default function HomeHero() {
         
         {/* --- BACKGROUND HORIZON GLOW --- */}
         <div className="absolute bottom-0 inset-x-0 h-[600px] flex justify-center pointer-events-none z-0">
-          <div className="absolute bottom-[-200px] w-[120%] h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#00635D]/20 via-emerald-400/5 to-transparent blur-[80px] rounded-[100%]" />
+          <div className="absolute bottom-[-200px] w-[120%] h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1B4C2E]/20 via-emerald-400/5 to-transparent blur-[80px] rounded-[100%]" />
         </div>
 
         {/* --- TOP CONTENT: Typography & CTA --- */}
@@ -185,7 +185,7 @@ export default function HomeHero() {
             {/* Primary CTA */}
             <button
               onClick={() => setIsDownloadOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#00635D] text-white text-sm font-semibold hover:bg-[#004e49] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 ease-out shadow-[0_8px_24px_rgba(0,99,93,0.25)] flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#1B4C2E] text-white text-sm font-semibold hover:bg-[#004e49] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 ease-out shadow-[0_8px_24px_rgba(0,99,93,0.25)] flex items-center justify-center gap-2"
             >
               Download the App
               <FaApple />
@@ -224,7 +224,7 @@ export default function HomeHero() {
           </motion.div>
         </motion.div>
 
-        <div className="relative w-full max-w-7xl mx-auto h-[850px] md:h-[1050px] lg:h-[1150px] perspective-[100px]">
+        <div className="relative w-full max-w-7xl mx-auto h-[850px] md:h-[1050px] lg:h-[1150px] perspective-[100px] -mt-38">
             <div 
             className="absolute inset-0 flex justify-center items-end z-10"
             onMouseMove={handleMouseMove}
@@ -258,7 +258,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="hidden lg:flex absolute bottom-8 right-8 bg-zinc-950 p-3 pr-6 rounded-2xl shadow-2xl items-center gap-4 z-40 border border-zinc-800"
+          className="hidden lg:flex absolute bottom-32 right-8 bg-zinc-950 p-3 pr-6 rounded-2xl shadow-2xl items-center gap-4 z-40 border border-zinc-800"
         >
           <div className="w-16 h-16 bg-white rounded-xl p-1 flex items-center justify-center">
             <div className="w-full h-full grid grid-cols-4 gap-0.5">

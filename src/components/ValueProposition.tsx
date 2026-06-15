@@ -118,7 +118,7 @@ export default function ValueProposition() {
               {/* Left: Narrative */}
               <div className="w-full lg:w-5/12 flex flex-col justify-center gap-6">
                 <div className="flex flex-col gap-2">
-                  <div className="w-12 h-12 rounded-2xl bg-[#00635D]/10 text-[#00635D] flex items-center justify-center mb-4 shadow-inner">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1B4C2E]/10 text-[#1B4C2E] flex items-center justify-center mb-4 shadow-inner">
                     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   </div>
                   <h3 className="text-3xl font-bold tracking-tight text-zinc-950 mb-2">Command & Care.</h3>
@@ -136,7 +136,7 @@ export default function ValueProposition() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * i, duration: 0.6, ease: customEase }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-[#00635D]/10 text-[#00635D] flex items-center justify-center shrink-0 shadow-inner">
+                      <div className="w-10 h-10 rounded-full bg-[#1B4C2E]/10 text-[#1B4C2E] flex items-center justify-center shrink-0 shadow-inner">
                         {item.icon}
                       </div>
                       <div>
@@ -163,7 +163,7 @@ export default function ValueProposition() {
                        <motion.path 
                          d="M -50 350 C 100 350, 150 150, 250 200 S 350 50, 450 100" 
                          fill="none" 
-                         stroke="#00635D" 
+                         stroke="#1B4C2E" 
                          strokeWidth="2"
                          className="opacity-40"
                        />
@@ -341,7 +341,7 @@ export default function ValueProposition() {
                       transition={{ delay: 0.3, type: "spring", stiffness: 300, damping: 25 }}
                       className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-[#00635D] text-white flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-[#1B4C2E] text-white flex items-center justify-center shrink-0 shadow-sm">
                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                       </div>
                       <div className="flex flex-col flex-1 pt-0.5">

@@ -39,7 +39,7 @@ export default function BentoFeatures() {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-950 mb-6">
             Everything you need. <br />
-            <span className="font-serif text-[#00635D] italic">Nothing you don&apos;t.</span>
+            <span className="font-serif text-[#1B4C2E] italic">Nothing you don&apos;t.</span>
           </h2>
           <p className="text-lg text-zinc-500 font-medium">
             Designed specifically for independent operators. No bloated enterprise software, just the tools required to run your route flawlessly.
@@ -63,11 +63,11 @@ export default function BentoFeatures() {
           className="md:col-span-2 bg-white rounded-[2.5rem] p-10 border border-zinc-200/60 shadow-sm relative overflow-hidden group cursor-default"
         >
           {/* Subtle Hover Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#00635D]/0 via-transparent to-[#00635D]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1B4C2E]/0 via-transparent to-[#1B4C2E]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
           <div className="relative z-10 flex flex-col h-full justify-between">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#00635D] group-hover:text-white transition-colors duration-500">
+              <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#1B4C2E] group-hover:text-white transition-colors duration-500">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
               </div>
               <h3 className="text-2xl font-bold tracking-tight text-zinc-950">Works offline.</h3>
@@ -100,7 +100,7 @@ export default function BentoFeatures() {
           className="md:row-span-2 bg-zinc-950 rounded-[2.5rem] p-10 border border-zinc-800 shadow-xl relative overflow-hidden group cursor-default text-white"
         >
           {/* Animated Glow on Hover */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#00635D]/30 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1B4C2E]/30 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
 
           <div className="relative z-10 flex flex-col h-full">
             <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
@@ -121,7 +121,7 @@ export default function BentoFeatures() {
                   variants={batteryFillVariants}
                   initial={{ y: "60%" }}
                   transition={{ duration: 1.5, ease: customEase }}
-                  className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-[#00635D] to-emerald-400 rounded-[1.5rem]"
+                  className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-[#1B4C2E] to-emerald-400 rounded-[1.5rem]"
                 />
                 {/* Percentage Text */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 mix-blend-overlay">
@@ -139,7 +139,7 @@ export default function BentoFeatures() {
           className="bg-white rounded-[2.5rem] p-10 border border-zinc-200/60 shadow-sm relative overflow-hidden group cursor-default"
         >
           <div className="relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#00635D] group-hover:text-white transition-colors duration-500">
+            <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#1B4C2E] group-hover:text-white transition-colors duration-500">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <h3 className="text-2xl font-bold tracking-tight text-zinc-950">Digital manifests.</h3>
@@ -164,7 +164,7 @@ export default function BentoFeatures() {
                 </motion.div>
               );
             })}
-            <div className="w-12 h-12 rounded-full border-4 border-white bg-[#00635D] flex items-center justify-center text-xs font-bold text-white shadow-md z-10">
+            <div className="w-12 h-12 rounded-full border-4 border-white bg-[#1B4C2E] flex items-center justify-center text-xs font-bold text-white shadow-md z-10">
               +39
             </div>
           </div>
@@ -177,7 +177,7 @@ export default function BentoFeatures() {
           className="bg-white rounded-[2.5rem] p-10 border border-zinc-200/60 shadow-sm relative overflow-hidden group cursor-default"
         >
           <div className="relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#00635D] group-hover:text-white transition-colors duration-500">
+            <div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center mb-6 text-zinc-900 group-hover:bg-[#1B4C2E] group-hover:text-white transition-colors duration-500">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
             </div>
             <h3 className="text-2xl font-bold tracking-tight text-zinc-950">Smart routing.</h3>
@@ -191,10 +191,10 @@ export default function BentoFeatures() {
             <motion.svg 
               variants={graphVariants}
               transition={{ duration: 0.7, ease: customEase }}
-              className="absolute bottom-0 w-full h-full text-[#00635D]/10 group-hover:text-[#00635D]/20 transition-colors duration-500" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none"
+              className="absolute bottom-0 w-full h-full text-[#1B4C2E]/10 group-hover:text-[#1B4C2E]/20 transition-colors duration-500" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none"
             >
               <path d="M0 100 C 20 60, 40 80, 60 40 C 80 10, 90 20, 100 0 L 100 100 Z" fill="currentColor" />
-              <path d="M0 100 C 20 60, 40 80, 60 40 C 80 10, 90 20, 100 0" stroke="#00635D" strokeWidth="2" />
+              <path d="M0 100 C 20 60, 40 80, 60 40 C 80 10, 90 20, 100 0" stroke="#1B4C2E" strokeWidth="2" />
             </motion.svg>
           </div>
         </motion.div>
