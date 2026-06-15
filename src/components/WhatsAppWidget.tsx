@@ -33,7 +33,8 @@ export default function WhatsAppWidget() {
   const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(preFilledMessage)}`;
 
   // Premium physics for the popover animation
-  const springConfig = { type: "spring", damping: 25, stiffness: 300 };
+// Notice the 'as const' at the end
+const springConfig = { type: "spring", damping: 25, stiffness: 300 } as const;
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
