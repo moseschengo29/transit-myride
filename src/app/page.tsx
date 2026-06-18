@@ -1,4 +1,3 @@
-import BentoFeatures from "../components/BentoFeatures";
 import Footer from "../components/Footer";
 import GlossySection from "../components/GlossySection";
 import HomeHero from "../components/Hero";
@@ -26,7 +25,6 @@ export default function Home() {
         <HomeHero />
       </GlossySection>
 
-        {/* <BentoFeatures /> */}
         <MoreFeatures />
         <ValueProposition />
         <FeatureStack />
@@ -35,7 +33,6 @@ export default function Home() {
         <PhoneShowcase />
         
         <Testimonials />
-        {/* <ConnectedEcosystem /> */}
 
         <FAQ />
 

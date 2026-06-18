@@ -16,12 +16,10 @@ export default function GlossySection({ children, className = "" }: GlossySectio
     target: containerRef,
     // Start tracking when the top of the element hits the top of the viewport
     // End tracking when the bottom of the element hits the top of the viewport
-    offset: ["start start", "end start"], 
+    offset: ["start start", "end start"],
   });
 
   // Map the scroll progress to visual effects
-  // As it scrolls up and out, it blurs, fades, and scales down slightly
-  const blur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(16px)"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
@@ -29,14 +27,14 @@ export default function GlossySection({ children, className = "" }: GlossySectio
     <motion.section
       ref={containerRef}
       style={{
-        filter: blur,
         opacity,
         scale,
+        willChange: "transform, opacity", // PERFORMANCE OPTIMIZATION: Forces GPU to handle the scroll animations
       }}
       className={`relative w-full ${className}`}
     >
-      {/* Optional: Add a subtle glass border/background effect to the section itself */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm border border-white/20 rounded-[2.5rem] -z-10" />
+
+      <div className="absolute inset-0 bg-white/95 shadow-sm border border-zinc-200/60 rounded-[2.5rem] -z-10" />
       
       {children}
     </motion.section>

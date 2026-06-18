@@ -92,16 +92,15 @@ export default function FAQ() {
   return (
     <section id="faqs" className="w-full py-32 bg-[#FAFAFC] relative flex flex-col items-center px-6 lg:px-12 border-t border-zinc-100 overflow-hidden">
       
-      {/* Top Ambient Glow */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#1B4C2E]/20 to-transparent" />
-
-      {/* --- HEADER --- */}
+      
       <div className="max-w-3xl mx-auto text-center mb-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: customEase }}
+          transition={{ duration: 0.6, ease: customEase }} // Sped up slightly for performance
+          style={{ willChange: "transform, opacity" }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-950 mb-6 leading-[1.1]">
             Common questions. <br />
@@ -112,13 +111,13 @@ export default function FAQ() {
 
       <div className="w-full max-w-3xl mx-auto relative z-10 flex flex-col items-center">
         
-        {/* --- FLOATING CATEGORY TABS --- */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex p-1.5 bg-white/80 backdrop-blur-xl border border-zinc-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-full mb-12 overflow-x-auto scrollbar-hide max-w-full"
+          style={{ willChange: "transform, opacity" }}
+          className="flex p-1.5 bg-white border border-zinc-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-full mb-12 overflow-x-auto scrollbar-hide max-w-full"
         >
           {faqData.map((data) => {
             const isActive = activeCategory === data.category;
@@ -136,8 +135,8 @@ export default function FAQ() {
                 {isActive && (
                   <motion.div
                     layoutId="activeFaqPill"
-                    className="absolute inset-0 bg-[#1B4C2E] rounded-full shadow-md"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    className="absolute inset-0 bg-[#1B4C2E] rounded-full shadow-sm"
+                    transition={{ duration: 0.3, ease: customEase }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
@@ -149,7 +148,6 @@ export default function FAQ() {
           })}
         </motion.div>
 
-        {/* --- MORPHING ACCORDION LIST --- */}
         <div className="w-full min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -157,24 +155,24 @@ export default function FAQ() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: customEase }}
+              transition={{ duration: 0.3, ease: customEase }}
               className="flex flex-col"
+              style={{ willChange: "transform, opacity" }}
             >
               {activeQuestions.map((faq, index) => {
                 const isOpen = expandedIndex === index;
-
                 return (
-                  <motion.div 
+                  <motion.div
                     layout
-                    key={index} 
-                    className={`group cursor-pointer overflow-hidden transition-all duration-500 ${
-                      isOpen 
-                        ? "bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] ring-1 ring-zinc-200/80 rounded-[2rem] my-4" 
+                    key={index}
+                    className={`group cursor-pointer overflow-hidden transition-all duration-300 ${
+                      isOpen
+                        ? "bg-white shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] ring-1 ring-zinc-200/80 rounded-[2rem] my-4"
                         : "border-b border-zinc-200 rounded-none hover:bg-zinc-100/50"
                     }`}
                     onClick={() => setExpandedIndex(isOpen ? null : index)}
                   >
-                    <div className={`w-full flex items-center justify-between text-left outline-none transition-all duration-500 ${
+                    <div className={`w-full flex items-center justify-between text-left outline-none transition-all duration-300 ${
                       isOpen ? "p-6 sm:p-8 pb-4" : "py-6 px-4"
                     }`}>
                       <span className={`text-lg md:text-xl font-semibold tracking-tight pr-8 transition-colors duration-300 ${
@@ -183,10 +181,9 @@ export default function FAQ() {
                         {faq.q}
                       </span>
                       
-                      {/* Animated Plus/Minus Icon */}
                       <motion.div
                         animate={{ rotate: isOpen ? 135 : 0 }}
-                        transition={{ duration: 0.4, ease: "backOut" }}
+                        transition={{ duration: 0.3, ease: "easeOut" }} // Removed backOut spring
                         className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 ${
                           isOpen ? "bg-emerald-50 text-[#1B4C2E]" : "bg-zinc-100 text-zinc-400 group-hover:bg-zinc-200 group-hover:text-zinc-900"
                         }`}
@@ -204,7 +201,8 @@ export default function FAQ() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: customEase }}
+                          transition={{ duration: 0.3, ease: customEase }}
+                          style={{ willChange: "height, opacity" }} // Force GPU to handle accordion sliding
                         >
                           <p className="text-zinc-500 text-base md:text-lg leading-relaxed px-6 sm:px-8 pb-8">
                             {faq.a}
@@ -218,24 +216,17 @@ export default function FAQ() {
             </motion.div>
           </AnimatePresence>
         </div>
-
       </div>
 
-      {/* --- GLASS TICKET CTA --- */}
+
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2, ease: customEase }}
-        className="w-full max-w-4xl mx-auto mt-4 relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white"
+        transition={{ duration: 0.5, delay: 0.1, ease: customEase }}
+        style={{ willChange: "transform, opacity" }}
+        className="w-full max-w-4xl mx-auto mt-4 relative rounded-[2rem] overflow-hidden shadow-sm border border-zinc-200 bg-white"
       >
-        {/* Soft Glass Background */}
-        <div className="absolute inset-0 bg-white/60 backdrop-blur-3xl -z-10" />
-        
-        {/* Accent Glows */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-300/20 rounded-full blur-[80px] -z-10 translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-300/20 rounded-full blur-[80px] -z-10 -translate-x-1/2 translate-y-1/2" />
-        
         <div className="px-8 py-10 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left relative z-10">
           <div className="flex items-center gap-6">
             <div className="hidden md:flex w-16 h-16 rounded-full bg-[#1B4C2E]/5 text-[#1B4C2E] items-center justify-center shrink-0">
@@ -251,7 +242,7 @@ export default function FAQ() {
             </div>
           </div>
           
-          <button className="shrink-0 px-8 py-4 rounded-full bg-zinc-950 text-white font-bold hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-zinc-900/20">
+          <button className="shrink-0 px-8 py-4 rounded-full bg-zinc-950 text-white font-bold hover:bg-zinc-800 transition-colors duration-300 shadow-sm">
             Chat with Support
           </button>
         </div>

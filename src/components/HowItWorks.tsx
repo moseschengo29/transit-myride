@@ -28,26 +28,26 @@ export default function HowItWorks() {
             <div className="w-full h-24 relative">
               <svg className="w-full h-full" viewBox="0 0 200 100" fill="none">
                 <path d="M10 50 Q 50 10, 100 50 T 190 50" stroke="#E4E4E7" strokeWidth="4" strokeLinecap="round" strokeDasharray="4 8" />
-                <motion.path 
+                <motion.path
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   transition={{ duration: 1.5, ease: customEase, delay: 0.2 }}
-                  d="M10 50 Q 50 10, 100 50 T 190 50" 
-                  stroke="#00635D" 
-                  strokeWidth="4" 
-                  strokeLinecap="round" 
+                  d="M10 50 Q 50 10, 100 50 T 190 50"
+                  stroke="#00635D"
+                  strokeWidth="4"
+                  strokeLinecap="round"
                 />
-                <motion.circle 
+                <motion.circle
                   initial={{ cx: 10, cy: 50 }}
                   animate={{ cx: [10, 100, 190], cy: [50, 50, 50] }}
                   transition={{ duration: 1.5, ease: customEase, delay: 0.2 }}
-                  r="6" 
-                  fill="#00635D" 
+                  r="6"
+                  fill="#00635D"
                   className="shadow-lg"
                 />
               </svg>
             </div>
-
+            
             {/* Clean iOS-style Toggle */}
             <div className="bg-white p-2 rounded-full w-40 flex items-center shadow-sm border border-zinc-200/60 relative">
               <span className="absolute left-5 text-[10px] font-bold text-zinc-400 tracking-widest">SESSION</span>
@@ -55,7 +55,9 @@ export default function HowItWorks() {
               <motion.div
                 initial={{ x: 0, backgroundColor: "#E4E4E7" }}
                 whileInView={{ x: 74, backgroundColor: "#00635D" }}
-                transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
+                // OPTIMIZATION: Removed heavy spring physics that triggered during scroll
+                transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+                style={{ willChange: "transform, background-color" }}
                 className="w-8 h-8 rounded-full shadow-md flex items-center justify-center text-white relative z-10"
               >
                 <div className="w-1.5 h-1.5 bg-white rounded-full" />
@@ -76,6 +78,7 @@ export default function HowItWorks() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: customEase }}
+              style={{ willChange: "transform, opacity" }}
               className="bg-zinc-50 p-4 rounded-2xl border border-zinc-100 flex gap-3 items-start relative overflow-hidden"
             >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#00635D]" />
@@ -87,11 +90,11 @@ export default function HowItWorks() {
                 <p className="text-sm text-zinc-900 font-medium leading-snug">Sarah&apos;s van is arriving. <span className="font-bold text-[#00635D]">ETA: 2 mins.</span></p>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4, ease: customEase }}
+              style={{ willChange: "transform, opacity" }}
               className="bg-white p-4 rounded-2xl border border-zinc-100 flex gap-3 items-start ml-8 relative overflow-hidden opacity-50"
             >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-zinc-300" />
@@ -114,7 +117,6 @@ export default function HowItWorks() {
             <h4 className="text-sm font-bold text-zinc-400 uppercase tracking-wider">Current Stop</h4>
             <span className="text-xs font-bold text-[#00635D] bg-emerald-50 px-2.5 py-1 rounded-full">3 Students</span>
           </div>
-          
           <div className="flex flex-col gap-2">
             {[
               { id: 1, name: "Jason D.", init: "JD" },
@@ -128,11 +130,12 @@ export default function HowItWorks() {
                   </div>
                   <span className="font-semibold text-sm text-zinc-900">{student.name}</span>
                 </div>
-                
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: i * 0.15, type: "spring", stiffness: 300 }}
+                  // OPTIMIZATION: Removed heavy spring physics
+                  transition={{ duration: 0.3, delay: i * 0.15, ease: "easeOut" }}
+                  style={{ willChange: "transform, opacity" }}
                   className="w-6 h-6 bg-[#00635D] text-white rounded-full flex items-center justify-center shadow-sm"
                 >
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -151,7 +154,6 @@ export default function HowItWorks() {
       description: "When the route ends, a detailed daily report summarizing all alerts, pick-ups, and timings is generated automatically. Export it to schools in one click.",
       visual: (
         <div className="w-full h-full bg-white rounded-3xl p-8 relative overflow-hidden flex flex-col border border-zinc-200/60 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-          
           <div className="flex items-start justify-between mb-8 relative z-10">
             <div>
               <div className="text-zinc-400 text-[10px] font-bold uppercase tracking-widest mb-1">Weekly Efficiency</div>
@@ -188,12 +190,12 @@ export default function HowItWorks() {
                 stroke="#00635D"
                 strokeWidth="2.5"
                 strokeLinecap="round"
-                className="drop-shadow-md"
               />
               <motion.circle
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 1.5, type: "spring" }}
+                // OPTIMIZATION: Removed heavy spring physics
+                transition={{ duration: 0.3, delay: 1.5, ease: "easeOut" }}
                 cx="100" cy="0" r="3" fill="#00635D" stroke="white" strokeWidth="1.5"
                 className="shadow-sm"
               />
@@ -205,17 +207,16 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="w-full py-32 bg-[#FAFAFC] relative overflow-hidden border-t border-zinc-100">
+    <section id="how-it-works" className="w-full py-24 bg-[#FAFAFC] relative overflow-hidden border-t border-zinc-100">
       
-      {/* --- SECTION HEADER --- */}
       <div className="max-w-3xl mx-auto text-center mb-24 px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: customEase }}
+          style={{ willChange: "transform, opacity" }} // Hardware Acceleration
         >
-
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-zinc-950 mb-6 leading-tight">
             The road to peace of mind.
           </h2>
@@ -232,26 +233,31 @@ export default function HowItWorks() {
         <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-[2px] bg-zinc-200 md:-translate-x-1/2 rounded-full" />
         
         {/* Animated Fill Line */}
-        <motion.div 
-          style={{ scaleY: scrollYProgress }} 
-          className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-[2px] bg-[#00635D] origin-top md:-translate-x-1/2 z-10 rounded-full" 
+        {/* PERFORMANCE OPTIMIZATION: Crucial willChange tag. Scrolling scaleY without GPU acceleration forces CPU repaints */}
+        <motion.div
+          style={{ 
+            scaleY: scrollYProgress, 
+            transformOrigin: "top", 
+            willChange: "transform" 
+          }}
+          className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-[2px] bg-[#00635D] md:-translate-x-1/2 z-10 rounded-full"
         />
 
         {/* The Steps */}
         <div className="flex flex-col gap-24 md:gap-32 relative z-20">
           {steps.map((step, index) => {
             const isEven = index % 2 === 0;
-
             return (
               <div key={step.step} className={`flex flex-col md:flex-row items-center w-full ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 
                 {/* Center Node (Number) */}
                 <div className="absolute left-[39px] md:left-1/2 -translate-x-1/2 flex items-center justify-center z-20">
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0, backgroundColor: "#ffffff", borderColor: "#E4E4E7", color: "#A1A1AA" }}
                     whileInView={{ scale: 1, backgroundColor: "#00635D", borderColor: "#004e49", color: "#ffffff" }}
                     viewport={{ margin: "-200px" }}
-                    transition={{ duration: 0.5, ease: customEase }}
+                    transition={{ duration: 0.4, ease: customEase }}
+                    style={{ willChange: "transform, background-color" }} // Hardware Acceleration
                     className="w-12 h-12 rounded-full border-[3px] flex items-center justify-center font-bold text-sm shadow-md"
                   >
                     {step.step}
@@ -259,13 +265,13 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Left/Right Text Content */}
-                {/* BUG FIX: Replaced md:pl-0 with proper left and right symmetrical padding based on screen side */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center pl-20 pr-6 md:px-16 lg:px-24 mb-10 md:mb-0">
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? -20 : 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: customEase }}
+                    style={{ willChange: "transform, opacity" }} // Hardware Acceleration
                     className={`flex flex-col ${isEven ? 'md:items-end md:text-right' : 'md:items-start md:text-left'}`}
                   >
                     <h3 className="text-2xl md:text-3xl lg:text-[32px] font-semibold tracking-tight text-zinc-900 mb-4 leading-tight">
@@ -278,13 +284,13 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Left/Right Interactive Visual Container */}
-                {/* BUG FIX: Exact symmetrical padding mirroring the text block above */}
                 <div className="w-full md:w-1/2 flex justify-center pl-20 pr-6 md:px-16 lg:px-24">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: customEase }}
+                    style={{ willChange: "transform, opacity" }} // Hardware Acceleration
                     className="w-full max-w-[400px] h-[320px] lg:h-[360px]"
                   >
                     {step.visual}
@@ -295,7 +301,6 @@ export default function HowItWorks() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

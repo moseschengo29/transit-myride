@@ -52,7 +52,6 @@ const VerifiedBadge = () => (
   </svg>
 );
 
-// --- ANIMATION VARIANTS ---
 const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 150 : -150,

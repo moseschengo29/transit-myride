@@ -63,7 +63,7 @@ export default function ValueProposition() {
       
       {/* --- PREMIUM MINIMALIST HEADER --- */}
       <div className="w-full max-w-4xl mx-auto text-center mb-16">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,7 +74,7 @@ export default function ValueProposition() {
         </motion.h2>
 
         {/* --- PROFESSIONAL SEGMENTED CONTROL --- */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -129,7 +129,7 @@ export default function ValueProposition() {
                 
                 <div className="flex flex-col gap-4">
                   {operatorFeatures.map((item, i) => (
-                    <motion.div 
+                    <motion.div
                       key={i}
                       className="bg-white p-4 rounded-2xl ring-1 ring-zinc-200/50 shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-start gap-4"
                       initial={{ opacity: 0, x: -10 }}
@@ -149,7 +149,6 @@ export default function ValueProposition() {
               </div>
 
               {/* Right: Operator UI Mockup */}
-              {/* Right: Technical UI Mockup (Redesigned for Premium SaaS feel) */}
               <div className="w-full lg:w-7/12 h-full bg-[#09090B] rounded-3xl p-2 shadow-2xl border border-zinc-800/80 flex flex-col relative overflow-hidden ring-1 ring-black">
                 
                 {/* Inner Bezel (Mimics hardware/screen edge) */}
@@ -158,20 +157,19 @@ export default function ValueProposition() {
                   {/* --- BACKGROUND: Minimalist Topographic Grid --- */}
                   <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px]" />
-                    {/* Abstract glowing route line in the background */}
                     <svg className="absolute w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="none">
-                       <motion.path 
-                         d="M -50 350 C 100 350, 150 150, 250 200 S 350 50, 450 100" 
-                         fill="none" 
-                         stroke="#1B4C2E" 
-                         strokeWidth="2"
-                         className="opacity-40"
-                       />
-                       <motion.circle 
-                         cx="250" cy="200" r="4" fill="#10B981" 
-                         animate={{ scale: [1, 2, 1], opacity: [1, 0.5, 1] }} 
-                         transition={{ duration: 2, repeat: Infinity }}
-                       />
+                      <motion.path
+                        d="M -50 350 C 100 350, 150 150, 250 200 S 350 50, 450 100"
+                        fill="none"
+                        stroke="#1B4C2E"
+                        strokeWidth="2"
+                        className="opacity-40"
+                      />
+                      <motion.circle
+                        cx="250" cy="200" r="4" fill="#FBA51C"
+                        animate={{ scale: [1, 2, 1], opacity: [1, 0.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
                     </svg>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F11] via-transparent to-[#0F0F11]" />
                   </div>
@@ -185,9 +183,9 @@ export default function ValueProposition() {
                       </div>
                       <span className="text-zinc-500 font-medium text-xs">Driver: David K. • Vehicle: KCA 123X</span>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                      <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-widest leading-none mt-0.5">Live</span>
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FBA51C]/10 rounded-full border border-[#FBA51C]/20 shadow-[0_0_15px_rgba(251,165,28,0.1)]">
+                      <span className="w-2 h-2 rounded-full bg-[#FBA51C] animate-pulse shadow-[0_0_8px_rgba(251,165,28,0.8)]" />
+                      <span className="text-[#FBA51C] text-[10px] font-bold uppercase tracking-widest leading-none mt-0.5">Live</span>
                     </div>
                   </div>
 
@@ -196,7 +194,6 @@ export default function ValueProposition() {
                     
                     {/* Left: Live Route Timeline */}
                     <div className="w-1/2 flex flex-col gap-0 relative">
-                      {/* Vertical connecting line */}
                       <div className="absolute left-[11px] top-4 bottom-8 w-[2px] bg-zinc-800 rounded-full z-0" />
                       
                       {[
@@ -208,14 +205,14 @@ export default function ValueProposition() {
                         <div key={i} className="flex items-start gap-4 relative z-10 mb-6 last:mb-0">
                           <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border-[3px] border-[#0F0F11] ${
                             stop.status === 'completed' ? 'bg-zinc-700' : 
-                            stop.status === 'active' ? 'bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.6)]' : 'bg-zinc-900 border-zinc-700'
+                            stop.status === 'active' ? 'bg-[#FBA51C] shadow-[0_0_12px_rgba(251,165,28,0.6)]' : 'bg-zinc-900 border-zinc-700'
                           }`}>
                             {stop.status === 'completed' && <svg className="w-3 h-3 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12l5 5l10 -10"/></svg>}
                             {stop.status === 'active' && <div className="w-2 h-2 bg-white rounded-full animate-ping" />}
                           </div>
                           <div className="flex flex-col pt-0.5">
                             <span className={`text-sm font-semibold tracking-tight ${stop.status === 'pending' ? 'text-zinc-500' : 'text-zinc-200'}`}>{stop.name}</span>
-                            <span className={`text-[10px] font-mono ${stop.status === 'active' ? 'text-emerald-400 font-bold' : 'text-zinc-600'}`}>{stop.time}</span>
+                            <span className={`text-[10px] font-mono ${stop.status === 'active' ? 'text-[#FBA51C] font-bold' : 'text-zinc-600'}`}>{stop.time}</span>
                           </div>
                         </div>
                       ))}
@@ -226,16 +223,16 @@ export default function ValueProposition() {
                       <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 backdrop-blur-md">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Accountability</span>
-                          <svg className="w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                          <svg className="w-3.5 h-3.5 text-[#1B4C2E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         </div>
                         <div className="text-3xl font-medium tracking-tighter text-white tabular-nums">14<span className="text-sm text-zinc-600 font-normal">/15</span></div>
-                        <div className="text-[11px] text-emerald-400 font-medium mt-1">All boarded kids verified</div>
+                        <div className="text-[11px] text-[#1B4C2E] font-medium mt-1">All boarded kids verified</div>
                       </div>
 
                       <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 backdrop-blur-md">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest">Parent Sync</span>
-                          <svg className="w-3.5 h-3.5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                          <svg className="w-3.5 h-3.5 text-[#0088AA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
                         </div>
                         <div className="text-3xl font-medium tracking-tighter text-white tabular-nums">100<span className="text-xl">%</span></div>
                         <div className="text-[11px] text-zinc-500 font-medium mt-1">Delivery rate • 0 errors</div>
@@ -245,18 +242,16 @@ export default function ValueProposition() {
                   </div>
 
                   {/* --- BOTTOM: The Sleek Command Bar --- */}
-                  {/* Replaces the old bulky broadcast box with a high-end "Command Palette" style input */}
                   <div className="relative z-20 mt-auto">
                     <div className="bg-zinc-900/80 backdrop-blur-xl border border-zinc-700/50 rounded-2xl p-1.5 flex items-center shadow-lg shadow-black/50 ring-1 ring-white/5">
-                      <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0 ml-1">
+                      <div className="w-8 h-8 rounded-xl bg-[#FBA51C]/10 flex items-center justify-center text-[#FBA51C] shrink-0 ml-1">
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                       </div>
                       
                       <div className="flex-1 px-3 flex flex-col justify-center">
-                         <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Broadcast Alert</span>
-                         <span className="text-sm font-medium text-zinc-300 truncate">Traffic delay on Waiyaki...</span>
+                        <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Broadcast Alert</span>
+                        <span className="text-sm font-medium text-zinc-300 truncate">Traffic delay on Waiyaki...</span>
                       </div>
-
                       <button className="bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold px-5 py-2.5 rounded-xl transition-colors shadow-sm flex items-center gap-1.5 shrink-0">
                         Send
                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -279,131 +274,130 @@ export default function ValueProposition() {
               {/* Right: Narrative */}
               <div className="w-full lg:w-5/12 flex flex-col justify-center gap-6">
                  <div className="flex flex-col gap-2">
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 shadow-inner">
+                    <div className="w-12 h-12 rounded-2xl bg-[#0088AA]/10 text-[#0088AA] flex items-center justify-center mb-4 shadow-inner">
                         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <h3 className="text-3xl font-bold tracking-tight text-zinc-950 mb-2">Total peace of mind.</h3>
                     <p className="text-lg text-zinc-500 font-medium leading-relaxed mb-4">
                         Never wonder where the van is again. Receive beautiful, instant notifications on your lock screen with live tracking links the moment they approach.
                     </p>
-                </div>
-                
-                <div className="flex flex-col gap-4">
-                  {guardianFeatures.map((item, i) => (
-                    <motion.div 
-                      key={i}
-                      className="bg-white p-4 rounded-2xl ring-1 ring-zinc-200/50 shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-start gap-4"
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * i, duration: 0.6, ease: customEase }}
-                    >
-                      <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 shadow-inner">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-semibold text-zinc-900 mb-1">{item.title}</h4>
-                        <p className="text-xs text-zinc-500 font-medium leading-relaxed">{item.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+                 </div>
+                 
+                 <div className="flex flex-col gap-4">
+                   {guardianFeatures.map((item, i) => (
+                     <motion.div
+                        key={i}
+                       className="bg-white p-4 rounded-2xl ring-1 ring-zinc-200/50 shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex items-start gap-4"
+                       initial={{ opacity: 0, x: 10 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 0.1 * i, duration: 0.6, ease: customEase }}
+                     >
+                       <div className="w-10 h-10 rounded-full bg-[#0088AA]/10 text-[#0088AA] flex items-center justify-center shrink-0 shadow-inner">
+                         {item.icon}
+                       </div>
+                       <div>
+                         <h4 className="text-sm font-semibold text-zinc-900 mb-1">{item.title}</h4>
+                         <p className="text-xs text-zinc-500 font-medium leading-relaxed">{item.description}</p>
+                       </div>
+                     </motion.div>
+                   ))}
+                 </div>
+               </div>
 
-              {/* Left: Consumer iOS Lock Screen Mockup */}
-              <div className="w-full lg:w-7/12 h-full bg-zinc-900 rounded-3xl p-3 shadow-2xl border border-zinc-800 flex flex-col items-center relative overflow-hidden">
-                {/* Cinematic iOS Wallpaper Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#4facfe] via-[#818cf8] to-[#fbc2eb] opacity-80" />
-                
-                <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative z-10 flex flex-col font-sans">
-                  
-                  {/* Status Bar */}
-                  <div className="flex justify-between items-center px-6 pt-3 text-white text-[11px] font-semibold mix-blend-overlay">
-                    <span>MTN</span>
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21L2 6C4.8 3.5 8.2 2 12 2s7.2 1.5 10 4l-10 15z"/></svg>
-                      <svg className="w-5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-                    </div>
-                  </div>
+               {/* Left: Consumer iOS Lock Screen Mockup */}
+               <div className="w-full lg:w-7/12 h-full bg-zinc-900 rounded-3xl p-3 shadow-2xl border border-zinc-800 flex flex-col items-center relative overflow-hidden">
+                 {/* Cinematic iOS Wallpaper Background */}
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#0088AA] via-[#005f77] to-[#FBA51C]/60 opacity-90" />
+                 
+                 <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative z-10 flex flex-col font-sans">
+                   
+                   {/* Status Bar */}
+                   <div className="flex justify-between items-center px-6 pt-3 text-white text-[11px] font-semibold mix-blend-overlay">
+                     <span>MTN</span>
+                     <div className="flex items-center gap-1.5">
+                       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21L2 6C4.8 3.5 8.2 2 12 2s7.2 1.5 10 4l-10 15z"/></svg>
+                       <svg className="w-5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                     </div>
+                   </div>
 
-                  {/* Lock Screen Time */}
-                  <div className="flex flex-col items-center mt-8 mb-12">
-                    <span className="text-white/90 text-sm font-medium tracking-wide">Wednesday, June 11</span>
-                    <span className="text-white text-[72px] font-medium tracking-tighter leading-none mix-blend-overlay">08:14</span>
-                  </div>
+                   {/* Lock Screen Time */}
+                   <div className="flex flex-col items-center mt-8 mb-12">
+                     <span className="text-white/90 text-sm font-medium tracking-wide">Wednesday, June 11</span>
+                     <span className="text-white text-[72px] font-medium tracking-tighter leading-none mix-blend-overlay">08:14</span>
+                   </div>
 
-                  {/* Notifications Stack */}
-                  <div className="flex-1 px-4 flex flex-col gap-2 overflow-y-auto">
-                    
-                    {/* Notification 1: Arrival Alert */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ delay: 0.3, type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-[#1B4C2E] text-white flex items-center justify-center shrink-0 shadow-sm">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                      </div>
-                      <div className="flex flex-col flex-1 pt-0.5">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-zinc-900 tracking-tight">MyRide Transit</span>
-                          <span className="text-[10px] text-zinc-500 font-medium">now</span>
-                        </div>
-                        <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Approaching Stop 4</span>
-                        <span className="text-[13px] text-zinc-700 leading-snug">The van is 2 minutes away. Tap here to view the live tracking map.</span>
-                      </div>
-                    </motion.div>
+                   {/* Notifications Stack */}
+                   <div className="flex-1 px-4 flex flex-col gap-2 overflow-y-auto">
+                     
+                     {/* Notification 1: Arrival Alert */}
+                     <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                       animate={{ opacity: 1, y: 0, scale: 1 }}
+                       transition={{ delay: 0.3, type: "spring", stiffness: 300, damping: 25 }}
+                       className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
+                     >
+                       <div className="w-10 h-10 rounded-xl bg-[#0088AA] text-white flex items-center justify-center shrink-0 shadow-sm">
+                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                       </div>
+                       <div className="flex flex-col flex-1 pt-0.5">
+                         <div className="flex justify-between items-center mb-1">
+                           <span className="text-xs font-bold text-zinc-900 tracking-tight">MyRide Transit</span>
+                           <span className="text-[10px] text-zinc-500 font-medium">now</span>
+                         </div>
+                         <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Approaching Stop 4</span>
+                         <span className="text-[13px] text-zinc-700 leading-snug">The van is 2 minutes away. Tap here to view the live tracking map.</span>
+                       </div>
+                     </motion.div>
 
-                    {/* Notification 2: Broadcast / Delay Alert */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ delay: 0.8, type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                      </div>
-                      <div className="flex flex-col flex-1 pt-0.5">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-zinc-900 tracking-tight">Driver Broadcast</span>
-                          <span className="text-[10px] text-zinc-500 font-medium">10m ago</span>
-                        </div>
-                        <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Traffic Update</span>
-                        <span className="text-[13px] text-zinc-700 leading-snug">&quot;Heavy traffic on Waiyaki Way. We are running 15m late.&quot;</span>
-                      </div>
-                    </motion.div>
+                     {/* Notification 2: Broadcast / Delay Alert */}
+                     <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                       animate={{ opacity: 1, y: 0, scale: 1 }}
+                       transition={{ delay: 0.8, type: "spring", stiffness: 300, damping: 25 }}
+                       className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
+                     >
+                       <div className="w-10 h-10 rounded-xl bg-[#FBA51C] text-white flex items-center justify-center shrink-0 shadow-sm">
+                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                       </div>
+                       <div className="flex flex-col flex-1 pt-0.5">
+                         <div className="flex justify-between items-center mb-1">
+                           <span className="text-xs font-bold text-zinc-900 tracking-tight">Driver Broadcast</span>
+                           <span className="text-[10px] text-zinc-500 font-medium">10m ago</span>
+                         </div>
+                         <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Traffic Update</span>
+                         <span className="text-[13px] text-zinc-700 leading-snug">&quot;Heavy traffic on Waiyaki Way. We are running 15m late.&quot;</span>
+                       </div>
+                     </motion.div>
 
-                    {/* Notification 3: Boarding Confirmation */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ delay: 1.3, type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-[#33CE6B] text-white flex items-center justify-center shrink-0 shadow-sm">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12l5 5l10 -10"/></svg>
-                      </div>
-                      <div className="flex flex-col flex-1 pt-0.5">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-bold text-zinc-900 tracking-tight">MyRide Transit</span>
-                          <span className="text-[10px] text-zinc-500 font-medium">1h ago</span>
-                        </div>
-                        <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Sarah K. Boarded</span>
-                        <span className="text-[13px] text-zinc-700 leading-snug">Sarah has been safely checked in by the driver.</span>
-                      </div>
-                    </motion.div>
+                     {/* Notification 3: Boarding Confirmation */}
+                     <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                       animate={{ opacity: 1, y: 0, scale: 1 }}
+                       transition={{ delay: 1.3, type: "spring", stiffness: 300, damping: 25 }}
+                       className="w-full bg-white/70 backdrop-blur-2xl rounded-3xl p-3 shadow-lg flex gap-3"
+                     >
+                       <div className="w-10 h-10 rounded-xl bg-[#1B4C2E] text-white flex items-center justify-center shrink-0 shadow-sm">
+                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12l5 5l10 -10"/></svg>
+                       </div>
+                       <div className="flex flex-col flex-1 pt-0.5">
+                         <div className="flex justify-between items-center mb-1">
+                           <span className="text-xs font-bold text-zinc-900 tracking-tight">MyRide Transit</span>
+                           <span className="text-[10px] text-zinc-500 font-medium">1h ago</span>
+                         </div>
+                         <span className="text-[13px] font-bold text-zinc-900 leading-tight mb-0.5">Sarah K. Boarded</span>
+                         <span className="text-[13px] text-zinc-700 leading-snug">Sarah has been safely checked in by the driver.</span>
+                       </div>
+                     </motion.div>
 
-                  </div>
+                   </div>
 
-                  {/* Home Indicator */}
-                  <div className="w-32 h-1.5 bg-white/50 rounded-full mx-auto mb-2" />
-                </div>
-              </div>
-            </motion.div>
+                   {/* Home Indicator */}
+                   <div className="w-32 h-1.5 bg-white/50 rounded-full mx-auto mb-2" />
+                 </div>
+               </div>
+             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </section>
   );

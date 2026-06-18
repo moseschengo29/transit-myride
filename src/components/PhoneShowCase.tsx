@@ -20,30 +20,32 @@ export default function PhoneShowcase() {
   );
 
   // --- LEFT COLUMN NARRATIVES ---
+  // OPTIMIZATION: Removed expensive `filter: blur()`. 
+  // Added a slight `scale` effect alongside opacity/y to simulate the "out of focus" cinematic feel natively on the GPU.
   const l1Opacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [1, 1, 0, 0, 0]);
   const l1Y = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [0, 0, -40, -40, -40]);
-  const l1Blur = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], ["blur(0px)", "blur(0px)", "blur(12px)", "blur(12px)", "blur(12px)"]);
+  const l1Scale = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [1, 1, 0.95, 0.95, 0.95]);
 
   const l2Opacity = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [0, 0, 1, 1, 0, 0]);
   const l2Y = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [40, 40, 0, 0, -40, -40]);
-  const l2Blur = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], ["blur(12px)", "blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)", "blur(12px)"]);
+  const l2Scale = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [0.95, 0.95, 1, 1, 0.95, 0.95]);
 
   const l3Opacity = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0, 0, 1, 1]);
   const l3Y = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [40, 40, 0, 0]);
-  const l3Blur = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], ["blur(12px)", "blur(12px)", "blur(0px)", "blur(0px)"]);
+  const l3Scale = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0.95, 0.95, 1, 1]);
 
   // --- RIGHT COLUMN NARRATIVES ---
   const r1Opacity = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [1, 1, 0, 0, 0]);
   const r1Y = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [0, 0, -40, -40, -40]);
-  const r1Blur = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], ["blur(0px)", "blur(0px)", "blur(12px)", "blur(12px)", "blur(12px)"]);
+  const r1Scale = useTransform(scrollYProgress, [0, 0.2, 0.25, 0.3, 1], [1, 1, 0.95, 0.95, 0.95]);
 
   const r2Opacity = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [0, 0, 1, 1, 0, 0]);
   const r2Y = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [40, 40, 0, 0, -40, -40]);
-  const r2Blur = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], ["blur(12px)", "blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)", "blur(12px)"]);
+  const r2Scale = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.55, 0.6, 1], [0.95, 0.95, 1, 1, 0.95, 0.95]);
 
   const r3Opacity = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0, 0, 1, 1]);
   const r3Y = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [40, 40, 0, 0]);
-  const r3Blur = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], ["blur(12px)", "blur(12px)", "blur(0px)", "blur(0px)"]);
+  const r3Scale = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0.95, 0.95, 1, 1]);
 
   return (
     <section id="showcase" ref={containerRef} className="relative h-[300vh] w-full bg-[#F7F7F7]">
@@ -54,7 +56,10 @@ export default function PhoneShowcase() {
           {/* --- LEFT COLUMN: Primary Narrative (Actions) --- */}
           <div className="hidden lg:block w-[350px] relative h-[320px]">
             {/* Step 1 Left */}
-            <motion.div style={{ opacity: l1Opacity, y: l1Y, filter: l1Blur }} className="absolute inset-0 flex flex-col justify-center">
+            <motion.div 
+              style={{ opacity: l1Opacity, y: l1Y, scale: l1Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center"
+            >
               <div className="flex items-center gap-4 mb-5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border border-zinc-300 text-xs font-bold text-zinc-500 tabular-nums">01</span>
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">Live Routing</span>
@@ -66,7 +71,10 @@ export default function PhoneShowcase() {
             </motion.div>
 
             {/* Step 2 Left */}
-            <motion.div style={{ opacity: l2Opacity, y: l2Y, filter: l2Blur }} className="absolute inset-0 flex flex-col justify-center pointer-events-none">
+            <motion.div 
+              style={{ opacity: l2Opacity, y: l2Y, scale: l2Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center pointer-events-none"
+            >
               <div className="flex items-center gap-4 mb-5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border border-zinc-300 text-xs font-bold text-zinc-500 tabular-nums">02</span>
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">Smart Triggers</span>
@@ -78,7 +86,10 @@ export default function PhoneShowcase() {
             </motion.div>
 
             {/* Step 3 Left */}
-            <motion.div style={{ opacity: l3Opacity, y: l3Y, filter: l3Blur }} className="absolute inset-0 flex flex-col justify-center pointer-events-none">
+            <motion.div 
+              style={{ opacity: l3Opacity, y: l3Y, scale: l3Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center pointer-events-none"
+            >
               <div className="flex items-center gap-4 mb-5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border border-zinc-300 text-xs font-bold text-zinc-500 tabular-nums">03</span>
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">Analytics</span>
@@ -94,6 +105,7 @@ export default function PhoneShowcase() {
           <div className="relative z-10 shrink-0 mx-auto">
             {/* The Phone Hardware Frame */}
             <div className="w-[320px] h-[660px] bg-zinc-950 rounded-[3rem] p-2.5 shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_30px_60px_rgba(0,0,0,0.4)] relative border-[4px] border-zinc-800 ring-1 ring-white/10">
+              
               {/* Hardware Buttons */}
               <div className="absolute top-32 -left-[6px] w-[3px] h-8 bg-zinc-700 rounded-l-md" />
               <div className="absolute top-44 -left-[6px] w-[3px] h-12 bg-zinc-700 rounded-l-md" />
@@ -109,7 +121,7 @@ export default function PhoneShowcase() {
                     <div className="w-2.5 h-2.5 rounded-full bg-[#0088AA]/40 shadow-[0_0_8px_#0088AA]" />
                   </div>
                 </div>
-                
+
                 {/* Status Bar */}
                 <div className="absolute top-4 left-7 right-6 flex justify-between z-40 text-[12px] font-semibold text-zinc-900 mix-blend-difference">
                   <span className="tabular-nums tracking-tight">10:30</span>
@@ -120,7 +132,10 @@ export default function PhoneShowcase() {
                 </div>
 
                 {/* Sliding Viewport Window */}
-                <motion.div className="w-full h-[300%] flex flex-col" style={{ y: phoneY }}>
+                <motion.div 
+                  className="w-full h-[300%] flex flex-col" 
+                  style={{ y: phoneY, willChange: "transform" }} // Force GPU for the main phone slide
+                >
                   
                   {/* --- INTERNAL VIEW 1: Realistic Navigation Map --- */}
                   <div className="h-1/3 w-full bg-[#E5E3DF] relative flex flex-col overflow-hidden">
@@ -145,7 +160,7 @@ export default function PhoneShowcase() {
                     </div>
 
                     {/* Top Floating Panel */}
-                    <div className="absolute top-12 inset-x-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/50 p-4 z-20 flex gap-4 items-center">
+                    <div className="absolute top-12 inset-x-4 bg-white/95 rounded-2xl shadow-lg border border-zinc-200/50 p-4 z-20 flex gap-4 items-center">
                       <div className="w-10 h-10 rounded-full bg-[#0088AA]/10 flex items-center justify-center text-[#0088AA]">
                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
                       </div>
@@ -169,14 +184,15 @@ export default function PhoneShowcase() {
 
                   {/* --- INTERNAL VIEW 2: Realistic Notifications (Lock Screen Style) --- */}
                   <div className="h-1/3 w-full bg-zinc-950 relative flex flex-col pt-24 px-4 overflow-hidden">
-                    {/* Soft blurred wallpaper background */}
+                    {/* Soft background */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#0088AA]/30 to-zinc-950 z-0" />
                     
                     <div className="relative z-10 flex flex-col gap-3 w-full">
                       <div className="text-white/40 text-[11px] font-medium text-center mb-1">Wednesday, October 14</div>
                       
                       {/* iOS Style Notification 1 */}
-                      <div className="w-full bg-white/10 backdrop-blur-2xl p-3.5 rounded-[1.25rem] shadow-lg border border-white/10 flex flex-col gap-2">
+                      {/* OPTIMIZATION: Swapped backdrop-blur-2xl for solid semi-transparent background */}
+                      <div className="w-full bg-zinc-800/90 p-3.5 rounded-[1.25rem] shadow-lg border border-white/10 flex flex-col gap-2">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5">
                             <div className="w-4 h-4 bg-[#0088AA] rounded flex items-center justify-center shadow-sm">
@@ -193,7 +209,8 @@ export default function PhoneShowcase() {
                       </div>
 
                       {/* iOS Style Notification 2 */}
-                      <div className="w-full bg-white/10 backdrop-blur-2xl p-3.5 rounded-[1.25rem] shadow-lg border border-white/10 flex flex-col gap-2 opacity-60">
+                      {/* OPTIMIZATION: Swapped backdrop-blur-2xl for solid semi-transparent background */}
+                      <div className="w-full bg-zinc-800/90 p-3.5 rounded-[1.25rem] shadow-lg border border-white/10 flex flex-col gap-2 opacity-60">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5">
                             <div className="w-4 h-4 bg-[#0088AA] rounded flex items-center justify-center shadow-sm">
@@ -231,10 +248,11 @@ export default function PhoneShowcase() {
                           <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mt-1">Students</div>
                         </div>
                       </div>
-                      
+
                       {/* Stat Card 2 */}
+                      {/* OPTIMIZATION: Removed backdrop-blur-sm from the inner circle */}
                       <div className="bg-gradient-to-br from-[#0088AA] to-[#006680] p-3.5 rounded-2xl flex flex-col justify-between h-[100px] text-white shadow-lg shadow-[#0088AA]/20 border border-[#0088AA]/50">
-                        <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                        <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
                           <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
                         </div>
                         <div>
@@ -265,12 +283,14 @@ export default function PhoneShowcase() {
                       </div>
                     </div>
                   </div>
+
                 </motion.div>
-                
+
                 {/* Home Indicator */}
                 <div className="absolute bottom-2 inset-x-0 flex justify-center z-50">
                   <div className="w-32 h-[4px] bg-zinc-950/30 mix-blend-difference rounded-full" />
                 </div>
+
               </div>
             </div>
           </div>
@@ -278,7 +298,10 @@ export default function PhoneShowcase() {
           {/* --- RIGHT COLUMN: Benefit Narrative (Results) --- */}
           <div className="hidden lg:block w-[340px] relative h-[300px] text-right">
             {/* Step 1 Right */}
-            <motion.div style={{ opacity: r1Opacity, y: r1Y, filter: r1Blur }} className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none">
+            <motion.div 
+              style={{ opacity: r1Opacity, y: r1Y, scale: r1Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none"
+            >
               <div className="flex items-center justify-end gap-4 mb-5">
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">The Result</span>
               </div>
@@ -289,7 +312,10 @@ export default function PhoneShowcase() {
             </motion.div>
 
             {/* Step 2 Right */}
-            <motion.div style={{ opacity: r2Opacity, y: r2Y, filter: r2Blur }} className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none">
+            <motion.div 
+              style={{ opacity: r2Opacity, y: r2Y, scale: r2Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none"
+            >
               <div className="flex items-center justify-end gap-4 mb-5">
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">Zero Input</span>
               </div>
@@ -300,7 +326,10 @@ export default function PhoneShowcase() {
             </motion.div>
 
             {/* Step 3 Right */}
-            <motion.div style={{ opacity: r3Opacity, y: r3Y, filter: r3Blur }} className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none">
+            <motion.div 
+              style={{ opacity: r3Opacity, y: r3Y, scale: r3Scale, willChange: "transform, opacity" }} 
+              className="absolute inset-0 flex flex-col justify-center items-end pointer-events-none"
+            >
               <div className="flex items-center justify-end gap-4 mb-5">
                 <span className="text-xs font-bold tracking-widest uppercase text-[#0088AA]">Compliance</span>
               </div>
@@ -310,7 +339,7 @@ export default function PhoneShowcase() {
               </p>
             </motion.div>
           </div>
-          
+
         </div>
       </div>
     </section>

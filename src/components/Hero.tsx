@@ -3,85 +3,12 @@
 import React, { useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring, Variants } from "framer-motion";
 import Image from "next/image";
-import DownloadModal from "./DownloandModal";
+import DownloadModal from "./DownloandModal"; // Ensure typo matches your actual file name
 import VideoModal from "./VideoDemoModal";
 import { FaApple } from "react-icons/fa";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 
-// --- THE FLOWING STAT CARDS DATA ---
-// (Note: This array is declared but not currently rendered in the JSX below. 
-// You can map over it later if you decide to add the floating stats back!)
-const floatingStats = [
-  {
-    id: 1,
-    top: "15%",
-    delay: 0,
-    duration: 20, 
-    content: (
-      <div className="bg-white/90 backdrop-blur-xl p-4 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] border border-white flex items-center gap-3 w-48">
-        <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center shrink-0">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-        </div>
-        <div>
-          <div className="text-sm font-bold text-zinc-900 leading-none mb-1">100% Sent</div>
-          <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest leading-none">Alert Status</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    top: "60%",
-    delay: 5,
-    duration: 25,
-    content: (
-      <div className="bg-white/90 backdrop-blur-xl p-4 rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] border border-white flex flex-col items-center justify-center gap-2">
-        <div className="relative w-14 h-14 flex items-center justify-center">
-          <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#E4E4E7" strokeWidth="10" />
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#1B4C2E" strokeWidth="10" strokeLinecap="round" strokeDasharray="283" strokeDashoffset="40" />
-          </svg>
-          <span className="text-sm font-bold text-zinc-900 tabular-nums">92%</span>
-        </div>
-        <div className="text-[10px] text-zinc-900 font-bold tracking-tight uppercase">Efficiency</div>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    top: "35%",
-    delay: 10,
-    duration: 22,
-    content: (
-      <div className="bg-white/90 backdrop-blur-xl p-4 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] border border-white flex items-center gap-3 w-52">
-        <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center shrink-0">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div>
-          <div className="text-sm font-bold text-zinc-900 leading-none mb-1">0.8 km</div>
-          <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest leading-none">Next Stop</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    top: "75%",
-    delay: 15,
-    duration: 28,
-    content: (
-      <div className="bg-white/90 backdrop-blur-xl p-4 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] border border-white flex items-center gap-3 w-48">
-        <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0 font-bold text-lg">
-          42
-        </div>
-        <div>
-          <div className="text-sm font-bold text-zinc-900 leading-none mb-1">Boarded</div>
-          <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest leading-none">Roll Call</div>
-        </div>
-      </div>
-    ),
-  }
-];
+
 
 export default function HomeHero() {
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
@@ -91,7 +18,7 @@ export default function HomeHero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Map mouse position to 3D rotation angles. 
+  // Map mouse position to 3D rotation angles.
   const rotateX = useTransform(mouseY, [-0.5, 0.5], [25, 5]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], [-25, 5]);
 
@@ -116,10 +43,9 @@ export default function HomeHero() {
     mouseY.set(0);
   }
 
-  // Use 'as const' to strictly type the easing array
   const customEase = [0.16, 1, 0.3, 1] as const;
 
-  // Explicitly type variants
+  // Added willChange to variants to force hardware acceleration on entrance
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -130,10 +56,12 @@ export default function HomeHero() {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: customEase } },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 1.2, ease: customEase } 
+    },
   };
-
-  const randomNumber = 16
 
   return (
     <>
@@ -141,7 +69,8 @@ export default function HomeHero() {
         
         {/* --- BACKGROUND HORIZON GLOW --- */}
         <div className="absolute bottom-0 inset-x-0 h-[600px] flex justify-center pointer-events-none z-0">
-          <div className="absolute bottom-[-200px] w-[120%] h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1B4C2E]/20 via-emerald-400/5 to-transparent blur-[80px] rounded-[100%]" />
+          {/* OPTIMIZATION: Removed `blur-[80px]`. Radial gradient natively creates the soft edge without using the CPU. */}
+          <div className="absolute bottom-[-200px] w-[120%] h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1B4C2E]/20 via-emerald-400/5 to-transparent rounded-[100%]" />
         </div>
 
         {/* --- TOP CONTENT: Typography & CTA --- */}
@@ -155,6 +84,7 @@ export default function HomeHero() {
             <div className="overflow-hidden pb-2">
               <motion.h1
                 variants={itemVariants}
+                style={{ willChange: "transform, opacity" }}
                 className="text-6xl md:text-7xl lg:text-[84px] leading-[1.05] font-semibold tracking-tight text-zinc-950"
               >
                 Your Connected
@@ -163,6 +93,7 @@ export default function HomeHero() {
             <div className="overflow-hidden pb-4">
               <motion.h1
                 variants={itemVariants}
+                style={{ willChange: "transform, opacity" }}
                 className="text-6xl md:text-7xl lg:text-[84px] leading-[1.05] font-semibold tracking-tight text-zinc-950"
               >
                 Transport Hub
@@ -172,6 +103,7 @@ export default function HomeHero() {
 
           <motion.p
             variants={itemVariants}
+            style={{ willChange: "transform, opacity" }}
             className="max-w-2xl text-lg md:text-xl text-zinc-500 font-medium leading-relaxed mb-8"
           >
             Make sense of your routes, from live tracking to parent alerts, and
@@ -180,6 +112,7 @@ export default function HomeHero() {
 
           <motion.div
             variants={itemVariants}
+            style={{ willChange: "transform, opacity" }}
             className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mb-16"
           >
             {/* Primary CTA */}
@@ -209,6 +142,7 @@ export default function HomeHero() {
           {/* Social Proof */}
           <motion.div
             variants={itemVariants}
+            style={{ willChange: "transform, opacity" }}
             className="flex flex-col items-center gap-3 pt-6 border-t border-zinc-200/60 w-full max-w-md mx-auto"
           >
             <div className="flex gap-1">
@@ -224,46 +158,52 @@ export default function HomeHero() {
           </motion.div>
         </motion.div>
 
-        <div className="relative w-full max-w-7xl mx-auto h-[850px] md:h-[1050px] lg:h-[1150px] perspective-[100px] -mt-38">
-            <div 
+        {/* --- 3D INTERACTIVE MOCKUP --- */}
+        <div className="relative w-full max-w-7xl mx-auto h-[850px] md:h-[1050px] lg:h-[1150px] perspective-[1000px] -mt-38">
+          <div
             className="absolute inset-0 flex justify-center items-end z-10"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            >
+          >
             <motion.div
-                // Apply the spring-based 3D rotation from the mouse tracking
-                style={{
+              // Apply the spring-based 3D rotation from the mouse tracking
+              // OPTIMIZATION: willChange heavily reduces CPU load during mouse movement
+              style={{
                 rotateX: springRotateX,
                 rotateY: springRotateY,
                 rotateZ: 2, // Slight constant diagonal tilt
-                }}
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: customEase }}
-                className="relative w-[380px] md:w-[500px] lg:w-[550px] h-[900px] md:h-[1100px] lg:h-[1200px] transform-style-3d cursor-crosshair"
+                willChange: "transform",
+              }}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: customEase }}
+              className="relative w-[380px] md:w-[500px] lg:w-[550px] h-[900px] md:h-[1100px] lg:h-[1200px] transform-style-3d cursor-crosshair"
             >
-                <Image
-                src="/Homepage.png"
+              <Image
+                src="/Homepage.webp"
                 alt="MyRide Transit Interface"
                 fill
-                sizes="(max-width: 768px) 320px, 340px"
-                className="object-contain drop-shadow-[-20px_40px_60px_rgba(0,0,0,0.3)] pointer-events-none"
+                sizes="(max-width: 768px) 380px, (max-width: 1024px) 500px, 550px"
+                className="object-contain pointer-events-none rounded-[3rem]"
                 priority
-                />
+              />
             </motion.div>
-            </div>
-        </div>      
+          </div>
+        </div>
 
+        {/* --- FLOATING APP DOWNLOAD BANNER --- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
+          style={{ willChange: "transform, opacity" }}
           className="hidden lg:flex absolute bottom-32 right-8 bg-zinc-950 p-3 pr-6 rounded-2xl shadow-2xl items-center gap-4 z-40 border border-zinc-800"
         >
           <div className="w-16 h-16 bg-white rounded-xl p-1 flex items-center justify-center">
             <div className="w-full h-full grid grid-cols-4 gap-0.5">
+              {/* BUG FIX: Previously 'randomNumber > 0.5' was always statically true. Created a static pseudo-random pattern instead to prevent hydration mismatch. */}
               {[...Array(16)].map((_, i) => (
-                <div key={i} className={`bg-zinc-950 rounded-sm ${randomNumber > 0.5 ? "opacity-100" : "opacity-0"}`} />
+                <div key={i} className={`bg-zinc-950 rounded-sm ${[0, 2, 5, 7, 8, 10, 13, 15].includes(i) ? "opacity-100" : "opacity-0"}`} />
               ))}
             </div>
           </div>

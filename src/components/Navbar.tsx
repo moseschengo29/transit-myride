@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // Reusable Hamburger component to keep the markup clean
 const HamburgerIcon = () => (
@@ -13,27 +13,50 @@ const HamburgerIcon = () => (
   </div>
 );
 
+// Moved outside the component to prevent recreation on every render
+const getNairobiTime = () =>
+  new Date().toLocaleTimeString("en-US", {
+    timeZone: "Africa/Nairobi",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [time, setTime] = useState("");
+  
+  // PERFORMANCE FIX: Initialize with time immediately and use suppressHydrationWarning in JSX
+  const [time, setTime] = useState(getNairobiTime);
+  
+  // Reference to the morphing nav container to detect clicks outside
+  const navRef = useRef<HTMLDivElement>(null);
 
-  // Live Nairobi time
+  // Live Nairobi time updater
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(now.toLocaleTimeString("en-US", {
-        timeZone: "Africa/Nairobi",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-      }));
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
+    const interval = setInterval(() => {
+      setTime(getNairobiTime());
+    }, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  // Handle clicks outside the dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (isOpen && navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isOpen]);
 
   // Track scroll to trigger the morphing states
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -59,7 +82,6 @@ export default function Navbar() {
   };
 
   return (
-    // Adjusted padding for mobile screens (px-4 py-5)
     <nav className="fixed top-0 left-0 w-full px-4 py-5 md:p-6 flex justify-between items-start z-50 pointer-events-none">
       
       {/* --- LEFT: Logo Box --- */}
@@ -72,7 +94,7 @@ export default function Navbar() {
           alt="My Ride Logo"
           width={350}
           height={150}
-          // Smaller height on mobile to prevent squishing
+          unoptimized // Added to prevent Next.js image optimization processing on static export
           className="h-9 md:h-12 w-auto"
           priority
         />
@@ -84,9 +106,12 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-            transition={{ duration: 0.4, ease }}
-            className="hidden lg:flex items-center p-1 pl-4 bg-white/50 backdrop-blur-2xl border border-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-full absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
+            // PERFORMANCE FIX: Removed `filter: "blur(4px)"` from exit animation
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease }}
+            style={{ willChange: "transform, opacity" }} // Force GPU handling
+            // PERFORMANCE FIX: Replaced `bg-white/50 backdrop-blur-2xl` with a crisp solid `bg-white/95`
+            className="hidden lg:flex items-center p-1 pl-4 bg-white/95 border border-zinc-200 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-full absolute left-1/2 -translate-x-1/2 pointer-events-auto gap-4"
           >
             <div className="flex items-center gap-3 cursor-default">
               <div className="relative flex h-2 w-2">
@@ -95,7 +120,7 @@ export default function Navbar() {
               </div>
               <div className="flex items-center gap-1.5 text-[13px] font-medium tracking-tight">
                 <span className="text-zinc-500">Nairobi</span>
-                <span className="text-zinc-900 tabular-nums">{time}</span>
+                <span suppressHydrationWarning className="text-zinc-900 tabular-nums">{time}</span>
               </div>
             </div>
 
@@ -103,7 +128,7 @@ export default function Navbar() {
 
             <a
               href="mailto:hello@myridetransit.com"
-              className="flex items-center gap-1.5 bg-white text-zinc-900 text-[13px] font-medium px-3.5 py-1.5 rounded-full shadow-sm hover:text-[#1B4C2E] transition-colors group"
+              className="flex items-center gap-1.5 bg-zinc-100/50 text-zinc-900 text-[13px] font-medium px-3.5 py-1.5 rounded-full shadow-sm hover:bg-zinc-100 hover:text-[#1B4C2E] transition-colors group"
             >
               Support
               <svg className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#1B4C2E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -117,8 +142,10 @@ export default function Navbar() {
 
       {/* --- RIGHT: The Responsive Morphing Nav Container --- */}
       <motion.div
+        ref={navRef}
         layout
-        transition={{ duration: 0.5, ease }}
+        transition={{ duration: 0.4, ease }} // Slightly sped up layout transition
+        style={{ willChange: "transform, width, height, border-radius" }} // Explicit GPU hints for morphing
         className={`bg-white shadow-sm border border-zinc-100 pointer-events-auto overflow-hidden origin-top-right flex items-center justify-center ${
           isOpen
             ? "rounded-3xl p-2 w-[200px]" // State 3: Open dropdown (All screens)
@@ -136,7 +163,8 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
+              style={{ willChange: "transform, opacity" }}
               className="flex items-center justify-center w-full h-full"
             >
               {/* Desktop View */}
@@ -169,6 +197,7 @@ export default function Navbar() {
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: 90 }}
               transition={{ duration: 0.3 }}
+              style={{ willChange: "transform, opacity" }}
               className="w-full h-full flex items-center justify-center cursor-pointer group"
               onClick={() => setIsOpen(true)}
             >
@@ -183,14 +212,15 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
+              style={{ willChange: "opacity" }}
               className="flex flex-col gap-1 p-2 w-full"
             >
               {/* Close Button Header */}
               <div className="flex justify-end mb-2">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-500 hover:bg-zinc-700 transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-[#2e4838] hover:bg-[#1b4c2ee3] transition-colors text-white"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
